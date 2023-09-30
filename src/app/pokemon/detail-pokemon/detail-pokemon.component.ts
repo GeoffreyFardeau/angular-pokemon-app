@@ -22,7 +22,7 @@ export class DetailPokemonComponent implements OnInit {
 
     if(pokemonId) {
 
-   this.pokemon = this.pokemonService.getPokemonById(+pokemonId);
+ this.pokemonService.getPokemonById(+pokemonId).subscribe(pokemon => this.pokemon = pokemon)
    
   }else {
       this.pokemon = undefined;
@@ -34,5 +34,9 @@ export class DetailPokemonComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/'])
+  }
+
+  goToEditPokemon(pokemon: Pokemon){
+    this.router.navigate(['/edit/pokemon', pokemon.id])
   }
 }
